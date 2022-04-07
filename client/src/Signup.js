@@ -10,14 +10,14 @@ import {
   FormHelperText,
   makeStyles,
   CardMedia,
-  Card,
 } from '@material-ui/core';
 import bgImg from './assets/bg-img.png';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
-    width: '50%',
+    width: '100vw',
     display: 'flex',
+    alignItems: 'center',
   },
   signupImgContainer: {
     position: "relative",
@@ -36,6 +36,18 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     transform: 'translate(-50%)',
     textAlign: 'center',
+  },
+  formWrapper: {
+    width: '100%',
+  },
+  formFlex: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  formControl: {
+    width: '70%',
+    margin: '25px'
   },
 }));
 
@@ -69,79 +81,71 @@ const Signup = ({ user, register }) => {
     <Box className={classes.wrapper}>
       <Box className={classes.signupImgContainer}>
         <CardMedia className={classes.signupImg} component="img" image={bgImg} title="Signup" alt="Signup" />
-
         <Typography variant='h6' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
       </Box>
-
-      <Grid container justifyContent="center">
+      <Box className={classes.formWrapper}>
         <Box>
-          <Grid container item>
-            <Typography>Need to log in?</Typography>
-            <Link href="/login" to="/login">
-              <Button>Login</Button>
-            </Link>
-          </Grid>
-          <form onSubmit={handleRegister}>
-            <Grid>
-              <Grid>
-                <FormControl>
-                  <TextField
-                    aria-label="username"
-                    label="Username"
-                    name="username"
-                    type="text"
-                    required
-                  />
-                </FormControl>
-              </Grid>
-              <Grid>
-                <FormControl>
-                  <TextField
-                    label="E-mail address"
-                    aria-label="e-mail address"
-                    type="email"
-                    name="email"
-                    required
-                  />
-                </FormControl>
-              </Grid>
-              <Grid>
-                <FormControl error={!!formErrorMessage.confirmPassword}>
-                  <TextField
-                    aria-label="password"
-                    label="Password"
-                    type="password"
-                    inputProps={{ minLength: 6 }}
-                    name="password"
-                    required
-                  />
-                  <FormHelperText>
-                    {formErrorMessage.confirmPassword}
-                  </FormHelperText>
-                </FormControl>
-              </Grid>
-              <Grid>
-                <FormControl error={!!formErrorMessage.confirmPassword}>
-                  <TextField
-                    label="Confirm Password"
-                    aria-label="confirm password"
-                    type="password"
-                    inputProps={{ minLength: 6 }}
-                    name="confirmPassword"
-                    required
-                  />
-                  <FormHelperText>
-                    {formErrorMessage.confirmPassword}
-                  </FormHelperText>
-                </FormControl>
-              </Grid>
-              <Button type="submit" variant="contained" size="large">
-                Create
-              </Button>
-            </Grid>
-          </form>
+          <Typography>Need to log in?</Typography>
+          <Link href="/login" to="/login">
+            <Button>Login</Button>
+          </Link>
         </Box>
-      </Grid>
+        <form onSubmit={handleRegister} className={classes.formFlex}>
+
+          <FormControl className={classes.formControl}>
+            <TextField
+              aria-label="username"
+              label="Username"
+              name="username"
+              type="text"
+              required
+            />
+          </FormControl>
+
+          <FormControl className={classes.formControl}>
+            <TextField
+              label="E-mail address"
+              aria-label="e-mail address"
+              type="email"
+              name="email"
+              required
+            />
+          </FormControl>
+
+          <FormControl error={!!formErrorMessage.confirmPassword} className={classes.formControl}>
+            <TextField
+              aria-label="password"
+              label="Password"
+              type="password"
+              inputProps={{ minLength: 6 }}
+              name="password"
+              required
+            />
+            <FormHelperText>
+              {formErrorMessage.confirmPassword}
+            </FormHelperText>
+          </FormControl>
+
+          <FormControl error={!!formErrorMessage.confirmPassword} className={classes.formControl}>
+            <TextField
+              label="Confirm Password"
+              aria-label="confirm password"
+              type="password"
+              inputProps={{ minLength: 6 }}
+              name="confirmPassword"
+              required
+            />
+            <FormHelperText>
+              {formErrorMessage.confirmPassword}
+            </FormHelperText>
+          </FormControl>
+
+          <Button type="submit" variant="contained" size="large" color='primary' style={{ width: '40%' }}>
+            Create
+          </Button>
+
+        </form>
+      </Box>
     </Box>
   );
 };
