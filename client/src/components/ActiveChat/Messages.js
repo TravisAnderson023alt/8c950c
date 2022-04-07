@@ -5,6 +5,9 @@ import moment from 'moment';
 
 const Messages = (props) => {
   const { messages, otherUser, userId } = props;
+  // messages.sort((a, b) => {
+  //   return a.id - b.id;
+  // })
 
   return (
     <Box>
@@ -21,7 +24,7 @@ const Messages = (props) => {
             otherUser={otherUser}
           />
         );
-      })}
+      }).reverse()}
     </Box>
   );
 };

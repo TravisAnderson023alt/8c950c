@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Input = ({ otherUser, conversationId, user, postMessage }) => {
+const Input = ({ otherUser, conversationId, user, postMessage, conversations, setConversations }) => {
   const classes = useStyles();
   const [text, setText] = useState('');
 
@@ -25,6 +25,9 @@ const Input = ({ otherUser, conversationId, user, postMessage }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    //setConversations(prev => [...prev]);
+
+
     const form = event.currentTarget;
     const formElements = form.elements;
     // add sender user info if posting to a brand new convo, so that the other user will have access to username, profile pic, etc.
@@ -36,6 +39,19 @@ const Input = ({ otherUser, conversationId, user, postMessage }) => {
     };
     await postMessage(reqBody);
     setText('');
+    setConversations(prev => [...prev]);
+    let tempArray = conversations;
+    tempArray.map((convo) => {
+      if (convo.id === conversationId) {
+        convo.messages.sort((a, b) => {
+          return b.id - a.id;
+        })
+        return convo;
+      } else {
+        return convo;
+      }
+    })
+    setConversations(tempArray);
   };
 
   return (
