@@ -9,17 +9,34 @@ import {
   TextField,
   FormHelperText,
   makeStyles,
-  CardMedia
+  CardMedia,
+  Card,
 } from '@material-ui/core';
 import bgImg from './assets/bg-img.png';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   wrapper: {
-    height: '100vh',
-    width: '100vw',
+    width: '50%',
     display: 'flex',
-
-  }
+  },
+  signupImgContainer: {
+    position: "relative",
+    backgroundColor: theme.palette.primary.main,
+  },
+  signupImg: {
+    height: "100vh",
+    width: 'auto',
+    // blue filter
+    opacity: 0.15,
+  },
+  signupImgText: {
+    position: "absolute",
+    color: "white",
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%)',
+    textAlign: 'center',
+  },
 }));
 
 const Signup = ({ user, register }) => {
@@ -50,12 +67,12 @@ const Signup = ({ user, register }) => {
 
   return (
     <Box className={classes.wrapper}>
-      <CardMedia
-        component="img"
-        alt="signup"
-        style={{ height: '100%', width: 'auto' }}
-        image={bgImg}
-      />
+      <Box className={classes.signupImgContainer}>
+        <CardMedia className={classes.signupImg} component="img" image={bgImg} title="Signup" alt="Signup" />
+
+        <Typography variant='h6' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
+      </Box>
+
       <Grid container justifyContent="center">
         <Box>
           <Grid container item>
