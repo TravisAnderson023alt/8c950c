@@ -40,18 +40,6 @@ const Input = ({ otherUser, conversationId, user, postMessage, conversations, se
     await postMessage(reqBody);
     setText('');
     setConversations(prev => [...prev]);
-    let tempArray = conversations;
-    tempArray.map((convo) => {
-      if (convo.id === conversationId) {
-        convo.messages.sort((a, b) => {
-          return b.id - a.id;
-        })
-        return convo;
-      } else {
-        return convo;
-      }
-    })
-    setConversations(tempArray);
   };
 
   return (
