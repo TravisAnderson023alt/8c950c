@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
-  Grid,
   Box,
   Typography,
   Button,
@@ -12,6 +11,7 @@ import {
   CardMedia,
 } from '@material-ui/core';
 import bgImg from './assets/bg-img.png';
+import { ReactComponent as BubbleSVG } from './assets/bubble.svg';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
   signupImgContainer: {
     position: "relative",
     backgroundColor: theme.palette.primary.main,
+    display: 'block',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    }
   },
   signupImg: {
     height: "100vh",
@@ -60,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
   },
   formFlex: {
     display: 'flex',
+    height: '100vh',
+    justifyContent: 'center',
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -100,6 +106,7 @@ const Signup = ({ user, register }) => {
     <Box className={classes.wrapper}>
       <Box className={classes.signupImgContainer}>
         <CardMedia className={classes.signupImg} component="img" image={bgImg} title="Signup" alt="Signup" />
+        <BubbleSVG className={classes.signupImgText} style={{ transform: 'translate(-50%, -150%)' }} />
         <Typography variant='h6' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
       </Box>
       <Box className={classes.formWrapper}>
