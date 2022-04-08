@@ -20,8 +20,6 @@ const Input = ({
   conversationId,
   user,
   postMessage,
-  conversations,
-  setConversations,
 }) => {
   const classes = useStyles();
   const [text, setText] = useState("");
@@ -32,7 +30,6 @@ const Input = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //setConversations(prev => [...prev]);
 
     const form = event.currentTarget;
     const formElements = form.elements;
@@ -45,7 +42,6 @@ const Input = ({
     };
     await postMessage(reqBody);
     setText("");
-    setConversations((prev) => [...prev]);
   };
 
   return (

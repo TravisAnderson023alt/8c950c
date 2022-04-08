@@ -30,8 +30,8 @@ const ActiveChat = ({
 
   const conversation = conversations
     ? conversations.find(
-        (conversation) => conversation.otherUser.username === activeConversation
-      )
+      (conversation) => conversation.otherUser.username === activeConversation
+    )
     : {};
 
   const isConversation = (obj) => {
@@ -59,8 +59,6 @@ const ActiveChat = ({
                   conversationId={conversation.id || null}
                   user={user}
                   postMessage={postMessage}
-                  setConversations={setConversations}
-                  conversations={conversations}
                 />
               </>
             )}

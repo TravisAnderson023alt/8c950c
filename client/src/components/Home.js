@@ -221,7 +221,6 @@ const Home = ({ user, logout }) => {
         <ActiveChat
           activeConversation={activeConversation}
           conversations={conversations}
-          setConversations={setConversations}
           user={user}
           postMessage={postMessage}
         />
