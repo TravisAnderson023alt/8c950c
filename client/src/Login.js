@@ -53,8 +53,7 @@ const useStyles = makeStyles((theme) => ({
     right: '0',
     alignItems: 'center',
     gap: theme.spacing(2),
-    marginRight: theme.spacing(4),
-    marginTop: theme.spacing(4),
+    margin: theme.spacing(4),
 
   },
   signupButton: {
