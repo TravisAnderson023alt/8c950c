@@ -7,7 +7,8 @@ import {
   FormControl,
   TextField,
   makeStyles,
-  CardMedia
+  CardMedia,
+  InputAdornment
 } from '@material-ui/core';
 import bgImg from './assets/bg-img.png';
 import { ReactComponent as BubbleSVG } from './assets/bubble.svg';
@@ -124,10 +125,13 @@ const Login = ({ user, login }) => {
           </FormControl>
           <FormControl margin="normal" required className={classes.formControl}>
             <TextField
-              label="password"
+              label="Password"
               aria-label="password"
               type="password"
               name="password"
+              InputProps={{
+                endAdornment: <Button color='primary'>Forgot?</Button>,
+              }}
             />
           </FormControl>
           <Button type="submit" variant="contained" size="large" color='primary' className={classes.loginButton}>
