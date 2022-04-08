@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   signupImg: {
     height: "100vh",
     width: 'auto',
-    // blue filter
     opacity: 0.15,
   },
   signupImgText: {
@@ -40,6 +39,25 @@ const useStyles = makeStyles((theme) => ({
   formWrapper: {
     width: '100%',
   },
+  loginFlex: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    position: 'fixed',
+    top: '0',
+    right: '0',
+    alignItems: 'center',
+    gap: theme.spacing(2),
+    marginRight: theme.spacing(4),
+    marginTop: theme.spacing(4),
+
+  },
+  loginButton: {
+    width: '150px',
+    backgroundColor: theme.background.default,
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+  },
   formFlex: {
     display: 'flex',
     flexDirection: 'column',
@@ -47,7 +65,8 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     width: '70%',
-    margin: '25px'
+    maxWidth: '600px',
+    margin: theme.spacing(2),
   },
 }));
 
@@ -84,14 +103,14 @@ const Signup = ({ user, register }) => {
         <Typography variant='h6' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
       </Box>
       <Box className={classes.formWrapper}>
-        <Box>
-          <Typography>Need to log in?</Typography>
-          <Link href="/login" to="/login">
-            <Button>Login</Button>
+        <Box className={classes.loginFlex}>
+          <Typography>Already have an account?</Typography>
+          <Link href="/login" to="/login" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" size="large" className={classes.loginButton}>Login</Button>
           </Link>
         </Box>
         <form onSubmit={handleRegister} className={classes.formFlex}>
-
+          <Typography className={classes.formControl} variant='h3'>Create an Account</Typography>
           <FormControl className={classes.formControl}>
             <TextField
               aria-label="username"
@@ -101,7 +120,6 @@ const Signup = ({ user, register }) => {
               required
             />
           </FormControl>
-
           <FormControl className={classes.formControl}>
             <TextField
               label="E-mail address"
@@ -140,7 +158,7 @@ const Signup = ({ user, register }) => {
             </FormHelperText>
           </FormControl>
 
-          <Button type="submit" variant="contained" size="large" color='primary' style={{ width: '40%' }}>
+          <Button type="submit" variant="contained" size="large" color='primary' style={{ width: '20%' }}>
             Create
           </Button>
 
