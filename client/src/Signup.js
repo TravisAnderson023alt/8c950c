@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -9,75 +9,74 @@ import {
   FormHelperText,
   makeStyles,
   CardMedia,
-} from '@material-ui/core';
-import bgImg from './assets/bg-img.png';
-import { ReactComponent as BubbleSVG } from './assets/bubble.svg';
+} from "@material-ui/core";
+import bgImg from "./assets/bg-img.png";
+import { ReactComponent as BubbleSVG } from "./assets/bubble.svg";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
-    width: '100vw',
-    display: 'flex',
-    alignItems: 'center',
+    width: "100vw",
+    display: "flex",
+    alignItems: "center",
   },
   signupImgContainer: {
     position: "relative",
     backgroundColor: theme.palette.primary.main,
-    display: 'block',
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
-    }
+    display: "block",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   signupImg: {
     height: "100vh",
-    width: 'auto',
+    width: "auto",
     opacity: 0.15,
   },
   signupImgText: {
     position: "absolute",
     color: "white",
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%)',
-    textAlign: 'center',
-    fontWeight: '100',
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%)",
+    textAlign: "center",
+    fontWeight: "100",
   },
   formWrapper: {
-    width: '100%',
+    width: "100%",
   },
   loginFlex: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    position: 'fixed',
-    top: '0',
-    right: '0',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    position: "fixed",
+    top: "0",
+    right: "0",
+    alignItems: "center",
     gap: theme.spacing(2),
     margin: theme.spacing(4),
-
   },
   loginButton: {
-    width: '150px',
+    width: "150px",
     backgroundColor: theme.background.default,
     color: theme.palette.primary.main,
-    textDecoration: 'none',
+    textDecoration: "none",
   },
   formFlex: {
-    display: 'flex',
-    height: '100vh',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    height: "100vh",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
   },
   formControl: {
-    width: '70%',
-    maxWidth: '600px',
+    width: "70%",
+    maxWidth: "600px",
     margin: theme.spacing(2),
   },
   signupButton: {
-    width: '20%',
+    width: "20%",
     marginTop: theme.spacing(3),
-  }
+  },
 }));
 
 const Signup = ({ user, register }) => {
@@ -96,32 +95,51 @@ const Signup = ({ user, register }) => {
     const confirmPassword = formElements.confirmPassword.value;
 
     if (password !== confirmPassword) {
-      setFormErrorMessage({ confirmPassword: 'Passwords must match' });
+      setFormErrorMessage({ confirmPassword: "Passwords must match" });
       return;
     }
     await register({ username, email, password });
   };
 
   useEffect(() => {
-    if (user && user.id) history.push('/home');
+    if (user && user.id) history.push("/home");
   }, [user, history]);
 
   return (
     <Box className={classes.wrapper}>
       <Box className={classes.signupImgContainer}>
-        <CardMedia className={classes.signupImg} component="img" image={bgImg} title="Signup" alt="Signup" />
-        <BubbleSVG className={classes.signupImgText} style={{ transform: 'translate(-50%, -150%)' }} />
-        <Typography variant='h5' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
+        <CardMedia
+          className={classes.signupImg}
+          component="img"
+          image={bgImg}
+          title="Signup"
+          alt="Signup"
+        />
+        <BubbleSVG
+          className={classes.signupImgText}
+          style={{ transform: "translate(-50%, -150%)" }}
+        />
+        <Typography variant="h5" className={classes.signupImgText}>
+          Converse with anyone with any Language
+        </Typography>
       </Box>
       <Box className={classes.formWrapper}>
         <Box className={classes.loginFlex}>
-          <Typography color='secondary'>Already have an account?</Typography>
-          <Link href="/login" to="/login" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="large" className={classes.loginButton}>Login</Button>
+          <Typography color="secondary">Already have an account?</Typography>
+          <Link href="/login" to="/login" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
+              size="large"
+              className={classes.loginButton}
+            >
+              Login
+            </Button>
           </Link>
         </Box>
         <form onSubmit={handleRegister} className={classes.formFlex}>
-          <Typography className={classes.formControl} variant='h3'>Create an account.</Typography>
+          <Typography className={classes.formControl} variant="h3">
+            Create an account.
+          </Typography>
           <FormControl className={classes.formControl}>
             <TextField
               aria-label="username"
@@ -141,7 +159,10 @@ const Signup = ({ user, register }) => {
             />
           </FormControl>
 
-          <FormControl error={!!formErrorMessage.confirmPassword} className={classes.formControl}>
+          <FormControl
+            error={!!formErrorMessage.confirmPassword}
+            className={classes.formControl}
+          >
             <TextField
               aria-label="password"
               label="Password"
@@ -150,12 +171,13 @@ const Signup = ({ user, register }) => {
               name="password"
               required
             />
-            <FormHelperText>
-              {formErrorMessage.confirmPassword}
-            </FormHelperText>
+            <FormHelperText>{formErrorMessage.confirmPassword}</FormHelperText>
           </FormControl>
 
-          <FormControl error={!!formErrorMessage.confirmPassword} className={classes.formControl}>
+          <FormControl
+            error={!!formErrorMessage.confirmPassword}
+            className={classes.formControl}
+          >
             <TextField
               label="Confirm Password"
               aria-label="confirm password"
@@ -164,18 +186,21 @@ const Signup = ({ user, register }) => {
               name="confirmPassword"
               required
             />
-            <FormHelperText>
-              {formErrorMessage.confirmPassword}
-            </FormHelperText>
+            <FormHelperText>{formErrorMessage.confirmPassword}</FormHelperText>
           </FormControl>
 
-          <Button type="submit" variant="contained" size="large" color='primary' className={classes.signupButton}>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            color="primary"
+            className={classes.signupButton}
+          >
             Create
           </Button>
-
         </form>
       </Box>
-    </Box >
+    </Box>
   );
 };
 

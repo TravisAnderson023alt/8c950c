@@ -91,10 +91,9 @@ const Home = ({ user, logout }) => {
       });
       setConversations(conversations);
     },
-    [setConversations, conversations],
+    [setConversations, conversations]
   );
   const addMessageToConversation = useCallback(
-
     (data) => {
       // if sender isn't null, that means the message needs to be put in a brand new convo
       const { message, sender = null } = data;
@@ -109,7 +108,6 @@ const Home = ({ user, logout }) => {
       }
 
       conversations.forEach((convo) => {
-
         if (convo.id === message.conversationId) {
           convo.messages.unshift(message);
           convo.latestMessageText = message.text;
@@ -117,7 +115,7 @@ const Home = ({ user, logout }) => {
       });
       setConversations(conversations);
     },
-    [setConversations, conversations],
+    [setConversations, conversations]
   );
 
   const setActiveChat = (username) => {
@@ -134,7 +132,7 @@ const Home = ({ user, logout }) => {
         } else {
           return convo;
         }
-      }),
+      })
     );
   }, []);
 
@@ -148,7 +146,7 @@ const Home = ({ user, logout }) => {
         } else {
           return convo;
         }
-      }),
+      })
     );
   }, []);
 
