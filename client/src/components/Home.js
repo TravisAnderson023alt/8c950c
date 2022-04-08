@@ -82,7 +82,7 @@ const Home = ({ user, logout }) => {
     (recipientId, message) => {
       conversations.forEach((convo) => {
         if (convo.otherUser.id === recipientId) {
-          convo.messages.unshift(message);
+          convo.messages.push(message);
           convo.latestMessageText = message.text;
           convo.id = message.conversationId;
         }
@@ -107,7 +107,7 @@ const Home = ({ user, logout }) => {
 
       conversations.forEach((convo) => {
         if (convo.id === message.conversationId) {
-          convo.messages.unshift(message);
+          convo.messages.push(message);
           convo.latestMessageText = message.text;
         }
       });
@@ -182,7 +182,11 @@ const Home = ({ user, logout }) => {
     const fetchConversations = async () => {
       try {
         const { data } = await axios.get("/api/conversations");
-        setConversations(data);
+        const tempArray = data;
+        tempArray.forEach((convo) => {
+          convo.messages.reverse();
+        });
+        setConversations(tempArray);
       } catch (error) {
         console.error(error);
       }
