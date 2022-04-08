@@ -75,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '600px',
     margin: theme.spacing(2),
   },
+  signupButton: {
+    width: '20%',
+    marginTop: theme.spacing(3),
+  }
 }));
 
 const Signup = ({ user, register }) => {
@@ -112,7 +116,7 @@ const Signup = ({ user, register }) => {
       </Box>
       <Box className={classes.formWrapper}>
         <Box className={classes.loginFlex}>
-          <Typography>Already have an account?</Typography>
+          <Typography color='secondary'>Already have an account?</Typography>
           <Link href="/login" to="/login" style={{ textDecoration: 'none' }}>
             <Button variant="contained" size="large" className={classes.loginButton}>Login</Button>
           </Link>
@@ -166,13 +170,13 @@ const Signup = ({ user, register }) => {
             </FormHelperText>
           </FormControl>
 
-          <Button type="submit" variant="contained" size="large" color='primary' style={{ width: '20%' }}>
+          <Button type="submit" variant="contained" size="large" color='primary' className={classes.signupButton}>
             Create
           </Button>
 
         </form>
       </Box>
-    </Box>
+    </Box >
   );
 };
 

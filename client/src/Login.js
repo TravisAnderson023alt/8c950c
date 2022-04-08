@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     transform: 'translate(-50%)',
     textAlign: 'center',
+    fontWeight: '100',
   },
   formWrapper: {
     width: '100%',
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
 
   },
-  loginButton: {
+  signupButton: {
     width: '200px',
     backgroundColor: theme.background.default,
     color: theme.palette.primary.main,
@@ -73,6 +74,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '600px',
     margin: theme.spacing(2),
   },
+  loginButton: {
+    width: '20%',
+    marginTop: theme.spacing(3),
+  }
 }));
 
 const Login = ({ user, login }) => {
@@ -98,13 +103,13 @@ const Login = ({ user, login }) => {
       <Box className={classes.loginImgContainer}>
         <CardMedia className={classes.loginImg} component="img" image={bgImg} title="Signup" alt="Signup" />
         <BubbleSVG className={classes.loginImgText} style={{ transform: 'translate(-50%, -150%)' }} />
-        <Typography variant='h6' className={classes.loginImgText}>Converse with anyone with any Language</Typography>
+        <Typography variant='h5' className={classes.loginImgText}>Converse with anyone with any Language</Typography>
       </Box>
       <Box className={classes.formWrapper}>
         <Box className={classes.signupFlex}>
-          <Typography>Dont have an account?</Typography>
+          <Typography color='secondary'>Dont have an account?</Typography>
           <Link href="/register" to="/register" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="large" className={classes.loginButton}>Create account</Button>
+            <Button variant="contained" size="large" className={classes.signupButton}>Create account</Button>
           </Link>
         </Box>
         <form onSubmit={handleLogin} className={classes.formFlex}>
@@ -125,7 +130,7 @@ const Login = ({ user, login }) => {
               name="password"
             />
           </FormControl>
-          <Button type="submit" variant="contained" size="large" color='primary' style={{ width: '20%' }}>
+          <Button type="submit" variant="contained" size="large" color='primary' className={classes.loginButton}>
             Login
           </Button>
         </form>
