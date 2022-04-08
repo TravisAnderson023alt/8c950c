@@ -50,10 +50,8 @@ const Home = ({ user, logout }) => {
   };
 
   const saveMessage = async (body) => {
-    const res = await axios.post("/api/messages", body);
-    // gets json instead of promise
-    const data = await res.data;
-    return data;
+    const data = await axios.post("/api/messages", body);
+    return data.data;
   };
 
   const sendMessage = (data, body) => {
@@ -82,14 +80,16 @@ const Home = ({ user, logout }) => {
 
   const addNewConvo = useCallback(
     (recipientId, message) => {
-      conversations.forEach((convo) => {
-        if (convo.otherUser.id === recipientId) {
-          convo.messages.unshift(message);
-          convo.latestMessageText = message.text;
-          convo.id = message.conversationId;
-        }
-      });
-      setConversations(conversations);
+      setConversations((prev) =>
+        prev.map((convo) => {
+          if (convo.otherUser.id === recipientId) {
+            convo.messages.push(message);
+            convo.latestMessageText = message.text;
+            convo.id = message.conversationId;
+          }
+          return convo;
+        })
+      );
     },
     [setConversations, conversations]
   );
@@ -106,14 +106,15 @@ const Home = ({ user, logout }) => {
         newConvo.latestMessageText = message.text;
         setConversations((prev) => [newConvo, ...prev]);
       }
-
-      conversations.forEach((convo) => {
-        if (convo.id === message.conversationId) {
-          convo.messages.unshift(message);
-          convo.latestMessageText = message.text;
-        }
-      });
-      setConversations(conversations);
+      setConversations((prev) =>
+        prev.map((convo) => {
+          if (convo.id === message.conversationId) {
+            convo.messages.push(message);
+            convo.latestMessageText = message.text;
+          }
+          return convo;
+        })
+      );
     },
     [setConversations, conversations]
   );
@@ -184,7 +185,11 @@ const Home = ({ user, logout }) => {
     const fetchConversations = async () => {
       try {
         const { data } = await axios.get("/api/conversations");
-        setConversations(data);
+        const tempArray = data;
+        tempArray.forEach((convo) => {
+          convo.messages.reverse();
+        });
+        setConversations(tempArray);
       } catch (error) {
         console.error(error);
       }
@@ -215,7 +220,6 @@ const Home = ({ user, logout }) => {
         <ActiveChat
           activeConversation={activeConversation}
           conversations={conversations}
-          setConversations={setConversations}
           user={user}
           postMessage={postMessage}
         />
