@@ -50,10 +50,8 @@ const Home = ({ user, logout }) => {
   };
 
   const saveMessage = async (body) => {
-    const res = await axios.post("/api/messages", body);
-    // gets json instead of promise
-    const data = await res.data;
-    return data;
+    const data = await axios.post("/api/messages", body);
+    return data.data;
   };
 
   const sendMessage = (data, body) => {
