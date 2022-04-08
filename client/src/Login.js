@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
-  signupImgContainer: {
+  loginImgContainer: {
     position: "relative",
     backgroundColor: theme.palette.primary.main,
     display: 'block',
@@ -26,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     }
   },
-  signupImg: {
+  loginImg: {
     height: "100vh",
     width: 'auto',
     opacity: 0.15,
   },
-  signupImgText: {
+  loginImgText: {
     position: "absolute",
     color: "white",
     top: '50%',
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   formWrapper: {
     width: '100%',
   },
-  loginFlex: {
+  signupFlex: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   loginButton: {
-    width: '150px',
+    width: '200px',
     backgroundColor: theme.background.default,
     color: theme.palette.primary.main,
     textDecoration: 'none',
@@ -95,20 +95,20 @@ const Login = ({ user, login }) => {
 
   return (
     <Box className={classes.wrapper}>
-      <Box className={classes.signupImgContainer}>
-        <CardMedia className={classes.signupImg} component="img" image={bgImg} title="Signup" alt="Signup" />
-        <BubbleSVG className={classes.signupImgText} style={{ transform: 'translate(-50%, -150%)' }} />
-        <Typography variant='h6' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
+      <Box className={classes.loginImgContainer}>
+        <CardMedia className={classes.loginImg} component="img" image={bgImg} title="Signup" alt="Signup" />
+        <BubbleSVG className={classes.loginImgText} style={{ transform: 'translate(-50%, -150%)' }} />
+        <Typography variant='h6' className={classes.loginImgText}>Converse with anyone with any Language</Typography>
       </Box>
       <Box className={classes.formWrapper}>
-        <Box className={classes.loginFlex}>
-          <Typography>Already have an account?</Typography>
+        <Box className={classes.signupFlex}>
+          <Typography>Dont have an account?</Typography>
           <Link href="/register" to="/register" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="large" className={classes.loginButton}>Signup</Button>
+            <Button variant="contained" size="large" className={classes.loginButton}>Create account</Button>
           </Link>
         </Box>
-        <form onSubmit={handleLogin}>
-          <Typography className={classes.formControl} variant='h3'>Create an Account</Typography>
+        <form onSubmit={handleLogin} className={classes.formFlex}>
+          <Typography className={classes.formControl} variant='h3'>Welcome back!</Typography>
           <FormControl margin="normal" required className={classes.formControl}>
             <TextField
               aria-label="username"
@@ -126,7 +126,7 @@ const Login = ({ user, login }) => {
             />
           </FormControl>
           <Button type="submit" variant="contained" size="large" color='primary' style={{ width: '20%' }}>
-            Create
+            Login
           </Button>
         </form>
       </Box>

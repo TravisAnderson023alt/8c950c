@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     transform: 'translate(-50%)',
     textAlign: 'center',
+    fontWeight: '100',
   },
   formWrapper: {
     width: '100%',
@@ -107,7 +108,7 @@ const Signup = ({ user, register }) => {
       <Box className={classes.signupImgContainer}>
         <CardMedia className={classes.signupImg} component="img" image={bgImg} title="Signup" alt="Signup" />
         <BubbleSVG className={classes.signupImgText} style={{ transform: 'translate(-50%, -150%)' }} />
-        <Typography variant='h6' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
+        <Typography variant='h5' className={classes.signupImgText}>Converse with anyone with any Language</Typography>
       </Box>
       <Box className={classes.formWrapper}>
         <Box className={classes.loginFlex}>
@@ -117,7 +118,7 @@ const Signup = ({ user, register }) => {
           </Link>
         </Box>
         <form onSubmit={handleRegister} className={classes.formFlex}>
-          <Typography className={classes.formControl} variant='h3'>Create an Account</Typography>
+          <Typography className={classes.formControl} variant='h3'>Create an account.</Typography>
           <FormControl className={classes.formControl}>
             <TextField
               aria-label="username"
