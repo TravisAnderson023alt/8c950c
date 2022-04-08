@@ -1,23 +1,30 @@
-import React, { useState } from 'react';
-import { FormControl, FilledInput } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from "react";
+import { FormControl, FilledInput } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
   root: {
-    justifySelf: 'flex-end',
+    justifySelf: "flex-end",
     marginTop: 15,
   },
   input: {
     height: 70,
-    backgroundColor: '#F4F6FA',
+    backgroundColor: "#F4F6FA",
     borderRadius: 8,
     marginBottom: 20,
   },
 }));
 
-const Input = ({ otherUser, conversationId, user, postMessage, conversations, setConversations }) => {
+const Input = ({
+  otherUser,
+  conversationId,
+  user,
+  postMessage,
+  conversations,
+  setConversations,
+}) => {
   const classes = useStyles();
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const handleChange = (event) => {
     setText(event.target.value);
@@ -26,7 +33,6 @@ const Input = ({ otherUser, conversationId, user, postMessage, conversations, se
   const handleSubmit = async (event) => {
     event.preventDefault();
     //setConversations(prev => [...prev]);
-
 
     const form = event.currentTarget;
     const formElements = form.elements;
@@ -38,8 +44,8 @@ const Input = ({ otherUser, conversationId, user, postMessage, conversations, se
       sender: conversationId ? null : user,
     };
     await postMessage(reqBody);
-    setText('');
-    setConversations(prev => [...prev]);
+    setText("");
+    setConversations((prev) => [...prev]);
   };
 
   return (
