@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FormControl, FilledInput } from "@material-ui/core";
+import { FormControl, FilledInput, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { ArrowUpwardSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -20,8 +21,7 @@ const Input = ({
   conversationId,
   user,
   postMessage,
-  conversations,
-  setConversations,
+  setOpen
 }) => {
   const classes = useStyles();
   const [text, setText] = useState("");
@@ -56,6 +56,12 @@ const Input = ({
           value={text}
           name="text"
           onChange={handleChange}
+          endAdornment={
+            <IconButton
+              onClick={() => setOpen(true)}>
+              <ArrowUpwardSharp />
+            </IconButton>
+          }
         />
       </FormControl>
     </form>

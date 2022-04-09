@@ -8,7 +8,6 @@ import {
   TextField,
   makeStyles,
   CardMedia,
-  InputAdornment,
 } from "@material-ui/core";
 import bgImg from "./assets/bg-img.png";
 import { ReactComponent as BubbleSVG } from "./assets/bubble.svg";
