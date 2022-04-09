@@ -78,6 +78,17 @@ const Home = ({ user, logout }) => {
     }
   };
 
+  const sendImage = (data, body) => {
+    socket.emit("new-message", {
+      recipientId: 1,
+      conversationId: 2,
+      sender: null,
+      text: "Hi there friend! Here's some pictures!",
+      attachments: ['url']
+    }
+    );
+  };
+
   const addNewConvo = useCallback(
     (recipientId, message) => {
       setConversations((prev) =>
