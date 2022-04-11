@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -7,75 +7,50 @@ import {
   FormControl,
   TextField,
   makeStyles,
-  CardMedia,
-  InputAdornment,
 } from "@material-ui/core";
-import bgImg from "./assets/bg-img.png";
-import { ReactComponent as BubbleSVG } from "./assets/bubble.svg";
+import { SideBanner } from "./components/LoginSignup/SideBanner";
+import { CreateLoginToggle } from "./components/LoginSignup/CreateLoginToggle";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     width: "100vw",
-    display: "flex",
-    alignItems: "center",
-  },
-  loginImgContainer: {
-    position: "relative",
-    backgroundColor: theme.palette.primary.main,
-    display: "block",
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  },
-  loginImg: {
     height: "100vh",
-    width: "auto",
-    opacity: 0.15,
-  },
-  loginImgText: {
-    position: "absolute",
-    color: "white",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%)",
-    textAlign: "center",
-    fontWeight: "100",
+    display: "flex",
   },
   formWrapper: {
-    width: "100%",
-  },
-  signupFlex: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    position: "fixed",
-    top: "0",
-    right: "0",
-    alignItems: "center",
-    gap: theme.spacing(2),
-    margin: theme.spacing(4),
-  },
-  signupButton: {
-    width: "200px",
-    backgroundColor: theme.background.default,
-    color: theme.palette.primary.main,
-    textDecoration: "none",
+    width: "380px",
+    height: "fit-content",
+    [theme.breakpoints.down("sm")]: {
+
+      width: "100%",
+      height: "100%",
+    }
   },
   formFlex: {
     display: "flex",
-    height: "100vh",
-    justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
+    position: 'relative',
+    width: '380px',
+    height: 'fit-content',
+    top: '170px',
+    left: '97px',
+    [theme.breakpoints.down("sm")]: {
+      left: '0px',
+      width: '100%',
+    }
   },
   formControl: {
-    width: "70%",
-    maxWidth: "600px",
+    width: "100%",
     margin: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      width: '90%'
+    },
   },
   loginButton: {
-    width: "20%",
-    marginTop: theme.spacing(3),
+    width: "160px",
+    height: '56px',
+    marginTop: theme.spacing(5),
   },
 }));
 
@@ -99,41 +74,11 @@ const Login = ({ user, login }) => {
 
   return (
     <Box className={classes.wrapper}>
-      <Box className={classes.loginImgContainer}>
-        <CardMedia
-          className={classes.loginImg}
-          component="img"
-          image={bgImg}
-          title="Signup"
-          alt="Signup"
-        />
-        <BubbleSVG
-          className={classes.loginImgText}
-          style={{ transform: "translate(-50%, -150%)" }}
-        />
-        <Typography variant="h5" className={classes.loginImgText}>
-          Converse with anyone with any Language
-        </Typography>
-      </Box>
+      <SideBanner />
       <Box className={classes.formWrapper}>
-        <Box className={classes.signupFlex}>
-          <Typography color="secondary">Dont have an account?</Typography>
-          <Link
-            href="/register"
-            to="/register"
-            style={{ textDecoration: "none" }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.signupButton}
-            >
-              Create account
-            </Button>
-          </Link>
-        </Box>
+        <CreateLoginToggle description="Don't have an account?" buttonText="Create account" />
         <form onSubmit={handleLogin} className={classes.formFlex}>
-          <Typography className={classes.formControl} variant="h3">
+          <Typography className={classes.formControl} style={{ fontWeight: '600', fontSize: '26px', lineHeight: '40px', margin: 0 }} variant="h3">
             Welcome back!
           </Typography>
           <FormControl margin="normal" required className={classes.formControl}>

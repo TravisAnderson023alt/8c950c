@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -8,74 +8,49 @@ import {
   TextField,
   FormHelperText,
   makeStyles,
-  CardMedia,
 } from "@material-ui/core";
-import bgImg from "./assets/bg-img.png";
-import { ReactComponent as BubbleSVG } from "./assets/bubble.svg";
+import { SideBanner } from "./components/LoginSignup/SideBanner";
+import { CreateLoginToggle } from "./components/LoginSignup/CreateLoginToggle";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     width: "100vw",
-    display: "flex",
-    alignItems: "center",
-  },
-  signupImgContainer: {
-    position: "relative",
-    backgroundColor: theme.palette.primary.main,
-    display: "block",
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  },
-  signupImg: {
     height: "100vh",
-    width: "auto",
-    opacity: 0.15,
-  },
-  signupImgText: {
-    position: "absolute",
-    color: "white",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%)",
-    textAlign: "center",
-    fontWeight: "100",
+    display: "flex",
   },
   formWrapper: {
-    width: "100%",
-  },
-  loginFlex: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    position: "fixed",
-    top: "0",
-    right: "0",
-    alignItems: "center",
-    gap: theme.spacing(2),
-    margin: theme.spacing(4),
-  },
-  loginButton: {
-    width: "150px",
-    backgroundColor: theme.background.default,
-    color: theme.palette.primary.main,
-    textDecoration: "none",
+    width: "380px",
+    height: "fit-content",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      height: "100%",
+    }
   },
   formFlex: {
     display: "flex",
-    height: "100vh",
-    justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
+    position: 'relative',
+    width: '380px',
+    height: 'fit-content',
+    top: '170px',
+    left: '97px',
+    [theme.breakpoints.down("sm")]: {
+      left: '0px',
+      width: '100%',
+    }
   },
   formControl: {
-    width: "70%",
-    maxWidth: "600px",
+    width: '100%',
     margin: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      width: '90%'
+    },
   },
   signupButton: {
-    width: "20%",
-    marginTop: theme.spacing(3),
+    width: "160px",
+    height: '56px',
+    marginTop: theme.spacing(5),
   },
 }));
 
@@ -107,37 +82,11 @@ const Signup = ({ user, register }) => {
 
   return (
     <Box className={classes.wrapper}>
-      <Box className={classes.signupImgContainer}>
-        <CardMedia
-          className={classes.signupImg}
-          component="img"
-          image={bgImg}
-          title="Signup"
-          alt="Signup"
-        />
-        <BubbleSVG
-          className={classes.signupImgText}
-          style={{ transform: "translate(-50%, -150%)" }}
-        />
-        <Typography variant="h5" className={classes.signupImgText}>
-          Converse with anyone with any Language
-        </Typography>
-      </Box>
+      <SideBanner />
       <Box className={classes.formWrapper}>
-        <Box className={classes.loginFlex}>
-          <Typography color="secondary">Already have an account?</Typography>
-          <Link href="/login" to="/login" style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.loginButton}
-            >
-              Login
-            </Button>
-          </Link>
-        </Box>
+        <CreateLoginToggle description="Already have an account?" buttonText="Login" />
         <form onSubmit={handleRegister} className={classes.formFlex}>
-          <Typography className={classes.formControl} variant="h3">
+          <Typography className={classes.formControl} style={{ fontWeight: '600', fontSize: '26px', lineHeight: '40px', margin: 0 }} variant="h3">
             Create an account.
           </Typography>
           <FormControl className={classes.formControl}>
