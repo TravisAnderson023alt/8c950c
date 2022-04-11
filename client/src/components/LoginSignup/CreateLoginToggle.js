@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-    signupFlex: {
+    flexContainer: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: '400',
         fontSize: '14px',
     },
-    signupButton: {
+    button: {
         backgroundColor: theme.background.default,
         color: theme.palette.primary.main,
         textDecoration: "none",
@@ -43,7 +43,7 @@ export const CreateLoginToggle = ({ description, buttonText }) => {
         }
     }
     return (
-        <Box className={classes.signupFlex}>
+        <Box className={classes.flexContainer}>
             <Typography color="secondary" className={classes.description}>{description}</Typography>
             <Link
                 href={linkToggle()}
@@ -53,7 +53,7 @@ export const CreateLoginToggle = ({ description, buttonText }) => {
                 <Button
                     variant="contained"
                     size="large"
-                    className={classes.signupButton}
+                    className={classes.button}
                 >
                     {buttonText}
                 </Button>

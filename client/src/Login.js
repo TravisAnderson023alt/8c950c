@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     width: "380px",
     height: "fit-content",
     [theme.breakpoints.down("sm")]: {
-
       width: "100%",
       height: "100%",
     }

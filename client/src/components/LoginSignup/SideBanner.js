@@ -9,7 +9,7 @@ import bgImg from "../../assets/bg-img.png";
 import { ReactComponent as BubbleSVG } from "../../assets/bubble.svg";
 
 const useStyles = makeStyles((theme) => ({
-    loginImgContainer: {
+    imgContainer: {
         position: "relative",
         backgroundColor: theme.palette.primary.main,
         display: "block",
@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
             display: "none",
         },
     },
-    loginImg: {
+    img: {
         height: "100vh",
         width: "auto",
         opacity: 0.15,
     },
-    loginImgText: {
+    imgText: {
         position: "absolute",
         width: '269px',
         height: '80px',
@@ -40,19 +40,19 @@ const useStyles = makeStyles((theme) => ({
 export const SideBanner = () => {
     const classes = useStyles();
     return (
-        <Box className={classes.loginImgContainer}>
+        <Box className={classes.imgContainer}>
             <CardMedia
-                className={classes.loginImg}
+                className={classes.img}
                 component="img"
                 image={bgImg}
                 title="Signup"
                 alt="Signup"
             />
             <BubbleSVG
-                className={classes.loginImgText}
+                className={classes.imgText}
                 style={{ transform: "translate(-50%, -150%)", height: '66px', width: '67px' }}
             />
-            <Typography variant="h5" className={classes.loginImgText}>
+            <Typography variant="h5" className={classes.imgText}>
                 Converse with anyone with any Language
             </Typography>
         </Box>
