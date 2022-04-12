@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-    Box,
+    Grid,
     Typography,
     Button,
     makeStyles,
@@ -9,13 +9,10 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     flexContainer: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-end",
+        width: 'fit-content',
         position: "absolute",
         top: "30px",
         right: "42px",
-        alignItems: "center",
         gap: theme.spacing(2),
     },
     description: {
@@ -43,21 +40,25 @@ export const CreateLoginToggle = ({ description, buttonText }) => {
         }
     }
     return (
-        <Box className={classes.flexContainer}>
-            <Typography color="secondary" className={classes.description}>{description}</Typography>
-            <Link
-                href={linkToggle()}
-                to={linkToggle()}
-                style={{ textDecoration: "none" }}
-            >
-                <Button
-                    variant="contained"
-                    size="large"
-                    className={classes.button}
+        <Grid container alignItems='center' className={classes.flexContainer}>
+            <Grid item>
+                <Typography color="secondary" className={classes.description}>{description}</Typography>
+            </Grid>
+            <Grid item>
+                <Link
+                    href={linkToggle()}
+                    to={linkToggle()}
+                    style={{ textDecoration: "none" }}
                 >
-                    {buttonText}
-                </Button>
-            </Link>
-        </Box>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        className={classes.button}
+                    >
+                        {buttonText}
+                    </Button>
+                </Link>
+            </Grid>
+        </Grid>
     );
 };
