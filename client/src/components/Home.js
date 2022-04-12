@@ -50,8 +50,8 @@ const Home = ({ user, logout }) => {
   };
 
   const saveMessage = async (body) => {
-    const data = await axios.post("/api/messages", body);
-    return data.data;
+    const { data } = await axios.post("/api/messages", body);
+    return data;
   };
 
   const sendMessage = (data, body) => {
@@ -86,6 +86,8 @@ const Home = ({ user, logout }) => {
             convo.messages.push(message);
             convo.latestMessageText = message.text;
             convo.id = message.conversationId;
+            const convoCopy = { ...convo };
+            return convoCopy;
           }
           return convo;
         })
@@ -111,6 +113,8 @@ const Home = ({ user, logout }) => {
           if (convo.id === message.conversationId) {
             convo.messages.push(message);
             convo.latestMessageText = message.text;
+            const convoCopy = { ...convo };
+            return convoCopy;
           }
           return convo;
         })
