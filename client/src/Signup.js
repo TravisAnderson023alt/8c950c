@@ -8,6 +8,7 @@ import {
   TextField,
   FormHelperText,
   makeStyles,
+  Grid,
 } from "@material-ui/core";
 import { SideBanner } from "./components/LoginSignup/SideBanner";
 import { CreateLoginToggle } from "./components/LoginSignup/CreateLoginToggle";
@@ -82,7 +83,7 @@ const Signup = ({ user, register }) => {
   }, [user, history]);
 
   return (
-    <Box className={classes.wrapper}>
+    <Grid className={classes.wrapper}>
       <SideBanner />
       <Box className={classes.formWrapper}>
         <CreateLoginToggle description="Already have an account?" buttonText="Login" />
@@ -150,7 +151,7 @@ const Signup = ({ user, register }) => {
           </Button>
         </form>
       </Box>
-    </Box>
+    </Grid>
   );
 };
 
