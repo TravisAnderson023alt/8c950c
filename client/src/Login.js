@@ -24,33 +24,33 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       height: "100%",
-    }
+    },
   },
   formFlex: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    position: 'relative',
-    width: '380px',
-    height: 'fit-content',
-    top: '170px',
-    left: '97px',
+    position: "relative",
+    width: "380px",
+    height: "fit-content",
+    top: "170px",
+    left: "97px",
     [theme.breakpoints.down("sm")]: {
-      left: '0px',
-      width: '100%',
-    }
+      left: "0px",
+      width: "100%",
+    },
   },
   formControl: {
     width: "100%",
     margin: theme.spacing(2),
-    fontSize: '14px',
+    fontSize: "14px",
     [theme.breakpoints.down("sm")]: {
-      width: '90%'
+      width: "90%",
     },
   },
   loginButton: {
     width: "160px",
-    height: '56px',
+    height: "56px",
     marginTop: theme.spacing(5),
   },
 }));
@@ -77,9 +77,21 @@ const Login = ({ user, login }) => {
     <Grid className={classes.wrapper}>
       <SideBanner />
       <Box className={classes.formWrapper}>
-        <CreateLoginToggle description="Don't have an account?" buttonText="Create account" />
+        <CreateLoginToggle
+          description="Don't have an account?"
+          buttonText="Create account"
+        />
         <form onSubmit={handleLogin} className={classes.formFlex}>
-          <Typography className={classes.formControl} style={{ fontWeight: '600', fontSize: '26px', lineHeight: '40px', margin: 0 }} variant="h3">
+          <Typography
+            className={classes.formControl}
+            style={{
+              fontWeight: "600",
+              fontSize: "26px",
+              lineHeight: "40px",
+              margin: 0,
+            }}
+            variant="h3"
+          >
             Welcome back!
           </Typography>
           <FormControl margin="normal" required className={classes.formControl}>
