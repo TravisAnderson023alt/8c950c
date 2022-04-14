@@ -7,7 +7,10 @@ import Box from '@material-ui/core/Box';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { TextField, Input } from '@material-ui/core';
 
-export const UploadImage = ({ open, setOpen }) => {
+export const UploadImage = ({ open, setOpen, otherUser,
+    postMessage,
+    conversationId,
+    user, }) => {
     const [formState, setFormState] = useState({ caption: '', image: '' });
 
     const handleClose = () => {
@@ -15,7 +18,6 @@ export const UploadImage = ({ open, setOpen }) => {
     };
 
     const handleUpload = async () => {
-        setOpen(false);
         let formData = new FormData()
         formData.append('image', formState.image)
         try {
@@ -31,14 +33,21 @@ export const UploadImage = ({ open, setOpen }) => {
 
             if (!response.ok) {
                 const data = await response
-                console.log(data)
             }
 
             const data = await response.json()
-            console.log(data)
-
+            const reqBody = {
+                text: formState.caption,
+                recipientId: otherUser.id,
+                conversationId,
+                sender: conversationId ? null : user,
+                attachments: [data.data.link],
+            };
+            await postMessage(reqBody);
+            setOpen(false);
         } catch (e) {
             console.log(e)
+            setOpen(false);
 
         }
 

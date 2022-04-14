@@ -50,7 +50,12 @@ const ActiveChat = ({
           <Box className={classes.chatContainer}>
             {user && (
               <>
-                <UploadImage open={open} setOpen={setOpen} />
+                <UploadImage open={open} setOpen={setOpen} otherUser={conversation.otherUser}
+                  conversationId={conversation.id || null}
+                  user={user}
+                  postMessage={postMessage}
+                />
+
                 <Messages
                   messages={conversation.messages}
                   otherUser={conversation.otherUser}

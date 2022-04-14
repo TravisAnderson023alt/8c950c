@@ -31,11 +31,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const OtherUserBubble = ({ text, time, otherUser }) => {
+const OtherUserBubble = ({ text, time, otherUser, image }) => {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
+
+      {image ? <img src={image} alt="" /> : null}
       <Avatar
         alt={otherUser.username}
         src={otherUser.photoUrl}

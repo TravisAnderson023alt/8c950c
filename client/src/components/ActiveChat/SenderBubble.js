@@ -27,12 +27,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const SenderBubble = ({ time, text }) => {
+const SenderBubble = ({ time, text, image }) => {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
+      {image ? <img src={image} alt="" /> : null}
       <Typography className={classes.date}>{time}</Typography>
+
       <Box className={classes.bubble}>
         <Typography className={classes.text}>{text}</Typography>
       </Box>
