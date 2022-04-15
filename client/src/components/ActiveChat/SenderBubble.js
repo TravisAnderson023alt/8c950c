@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -23,6 +23,7 @@ const useStyles = makeStyles(() => ({
   },
   bubble: {
     background: "#F4F6FA",
+    padding: theme.spacing(1),
     borderRadius: "10px 10px 0 10px",
   },
 }));
@@ -32,10 +33,13 @@ const SenderBubble = ({ time, text, image }) => {
 
   return (
     <Box className={classes.root}>
-      {image ? <img src={image} alt="" /> : null}
       <Typography className={classes.date}>{time}</Typography>
 
       <Box className={classes.bubble}>
+        {/* {image ? <img src={image} style={{ width: '50%' }} alt="" /> : null} */}
+        {image ? image.map((img, index) => (
+          <img key={index} src={img} style={{ width: "50%" }} alt="" />
+        )) : null}
         <Typography className={classes.text}>{text}</Typography>
       </Box>
     </Box>
