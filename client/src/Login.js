@@ -6,54 +6,11 @@ import {
   Button,
   FormControl,
   TextField,
-  makeStyles,
   Grid,
 } from "@material-ui/core";
 import { SideBanner } from "./components/LoginSignup/SideBanner";
 import { CreateLoginToggle } from "./components/LoginSignup/CreateLoginToggle";
-
-const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-  },
-  formWrapper: {
-    width: "380px",
-    height: "fit-content",
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
-      height: "100%",
-    },
-  },
-  formFlex: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    position: "relative",
-    width: "380px",
-    height: "fit-content",
-    top: "170px",
-    left: "97px",
-    [theme.breakpoints.down("sm")]: {
-      left: "0px",
-      width: "100%",
-    },
-  },
-  formControl: {
-    width: "100%",
-    margin: theme.spacing(2),
-    fontSize: "14px",
-    [theme.breakpoints.down("sm")]: {
-      width: "90%",
-    },
-  },
-  loginButton: {
-    width: "160px",
-    height: "56px",
-    marginTop: theme.spacing(5),
-  },
-}));
+import { useStyles } from "./components/LoginSignup/useStyles";
 
 const Login = ({ user, login }) => {
   const history = useHistory();
@@ -118,7 +75,7 @@ const Login = ({ user, login }) => {
             variant="contained"
             size="large"
             color="primary"
-            className={classes.loginButton}
+            className={classes.button}
           >
             Login
           </Button>
