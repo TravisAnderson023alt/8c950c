@@ -15,7 +15,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Input = ({ otherUser, conversationId, user, postMessage }) => {
+const Input = ({
+  otherUser,
+  conversationId,
+  user,
+  postMessage,
+  conversations,
+  setConversations,
+}) => {
   const classes = useStyles();
   const [text, setText] = useState("");
 
