@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Typography, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,11 +20,12 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: -0.2,
     padding: 8,
     fontWeight: "bold",
+    margin: theme.spacing(1),
   },
   bubble: {
     background: "#F4F6FA",
-    padding: theme.spacing(1),
     borderRadius: "10px 10px 0 10px",
+    overflow: 'hidden',
   },
 }));
 
@@ -36,10 +37,13 @@ const SenderBubble = ({ time, text, image }) => {
       <Typography className={classes.date}>{time}</Typography>
 
       <Box className={classes.bubble}>
-        {/* {image ? <img src={image} style={{ width: '50%' }} alt="" /> : null} */}
-        {image ? image.map((img, index) => (
-          <img key={index} src={img} style={{ width: "50%" }} alt="" />
-        )) : null}
+        <Grid spacing={1} container sx={{ padding: '0px', gap: '5px' }}>
+          {image ? image.map((img, index) => (
+            <Grid key={index} item sx={{ padding: '0px' }}>
+              <img src={img} style={{ height: "200px" }} alt="" />
+            </Grid>
+          )) : null}
+        </Grid>
         <Typography className={classes.text}>{text}</Typography>
       </Box>
     </Box>
