@@ -23,20 +23,19 @@ export const UploadImage = ({ open, setOpen, otherUser,
             formData.append('image', file)
         })
         try {
-            const data = [];
             const images = formData.getAll('image')
-            for (let formData of images) {
+            const tasks = images.map(async (image) => {
                 const response = await fetch('https://api.imgur.com/3/image', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
                         Authorization: 'Client-ID 9b53c90f4ae19d0',
                     },
-                    body: formData
+                    body: image
                 })
-                data.push(await response.json())
-            }
-
+                return await response.json()
+            })
+            const data = await Promise.all(tasks)
             const links = data.map(image => image.data.link)
             const reqBody = {
                 text: formState.caption,
