@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography, Avatar, Grid } from "@material-ui/core";
+import { BubbleMessage } from "./BubbleMessage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,16 +50,7 @@ const OtherUserBubble = ({ text, time, otherUser, image }) => {
         <Typography className={classes.usernameDate}>
           {otherUser.username} {time}
         </Typography>
-        <Box className={classes.bubble}>
-          <Grid spacing={1} container sx={{ padding: '0px', gap: '5px' }}>
-            {image ? image.map((img, index) => (
-              <Grid key={index} item sx={{ padding: '0px' }}>
-                <img src={img} style={{ height: "200px" }} alt="" />
-              </Grid>
-            )) : null}
-          </Grid>
-          <Typography className={classes.text}>{text}</Typography>
-        </Box>
+        <BubbleMessage image={image} text={text} classes={classes} />
       </Box>
     </Box>
   );

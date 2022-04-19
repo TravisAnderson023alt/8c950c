@@ -23,7 +23,6 @@ export const UploadImage = ({ open, setOpen, otherUser,
             formData.append('image', file)
         })
         try {
-            //console.log(formData.getAll('image'))
             const data = [];
             const images = formData.getAll('image')
             for (let formData of images) {
